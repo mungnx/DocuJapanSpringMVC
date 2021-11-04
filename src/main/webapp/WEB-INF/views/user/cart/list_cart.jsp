@@ -1,0 +1,75 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
+<meta charset="ISO-8859-1">
+<title>List Cart</title>
+
+<body>
+<div class="row">
+	<div class="span12">
+    <ul class="breadcrumb">
+		<li><a href="index.html">Home</a> <span class="divider">/</span></li>
+		<li class="active">Check Out</li>
+    </ul>
+	<div class="well well-small">
+		<h1>Check Out <small class="pull-right"> ${TotalQuantyCart } Items are in the cart </small></h1>
+	<hr class="soften"/>	
+
+	<table class="table table-bordered table-condensed">
+              <thead>
+                <tr>
+                  <th>San Pham</th>
+                  <th>Ten SP</th>
+ 
+                  <th>Don Gia</th>
+                  <th>So luong</th>
+                  <th>Chinh sua </th>
+                  <th>Xoa SP</th>
+                  <th>Thanh tien</th>
+				</tr>
+              </thead>
+              <tbody>
+              
+              <c:forEach var="item" items="${Cart }">
+                <tr>
+                  <td><img width="100" src="<c:url value="/assets/user/img/${item.value.product.img}"/>" alt=""></td>
+                  <td>${item.value.product.title }</td>
+   
+            		<td><fmt:formatNumber type="number" groupingUsed="true" value="${item.value.product.price }" /> đ</td>
+                  <td>
+					<input type="number" min="0" max="10" class="span1" style="max-width:34px" placeholder="1" id="quanty-cart-${item.key }" size="16" type="text" value="${item.value.quanty }">
+				  </td>
+				  <td>
+					<button data-id="${item.key }" class="btn btn-mini btn-danger edit-cart" >
+					<span class="icon-edit"></span>
+					</button>
+				</td>
+				<td>
+					<a href="<c:url value="/DeleteCart/${item.key } "/>" class="btn btn-mini btn-danger" type="button"><span class="icon-remove"></span></a>
+				</td>
+                  <td><fmt:formatNumber type="number" groupingUsed="true" value="${item.value.totalPrice }" /> đ</td>
+                </tr>
+				 </c:forEach>
+				</tbody>
+            </table><br/>
+		
+	<a href="products.html" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Continue Shopping </a>
+	<a href="login.html" class="shopBtn btn-large pull-right">Next <span class="icon-arrow-right"></span></a>
+
+</div>
+</div>
+</div>
+<content tag="script">
+<script>
+$(".edit-cart").on("click",function(){
+	var id=$(this).data("id");
+	var quanty=$("#quanty-cart-"+id).val();
+	window.location="EditCart/"+id+"/"+quanty;
+});
+
+</script>
+</content>
+
+</body>
+</html>
