@@ -8,4 +8,6 @@ import DocuJapan.Entity.User;
 public interface IAccountService {
 
 	public int AddAccount(User user);
+	
+	public boolean CheckAccount(User user);
 }

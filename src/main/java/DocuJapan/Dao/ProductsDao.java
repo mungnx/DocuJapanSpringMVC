@@ -126,10 +126,12 @@ public  List<ProductsDto> GetDataProductsPaginate(int id,int toltalPage, int off
 	}
 //Phan trang toan bo san pham
 public  List<ProductsDto> AllProductsPaginate(int toltalPage, int offset){	
-		String sql=SqlProductsPaginates(toltalPage, offset);
-		List<ProductsDto>listProducts=_jbdcTemplate.query(sql,new ProductsDtoMapper());
+	List<ProductsDto> listProduct=new ArrayList<ProductsDto>();	
+	String sql=SqlProductsPaginates(toltalPage, offset);
+		
+		listProduct=_jbdcTemplate.query(sql.toString(),new ProductsDtoMapper());
 	
-	return listProducts;
+	return listProduct;
 }
 
 	

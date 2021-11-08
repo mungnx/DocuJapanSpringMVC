@@ -37,7 +37,6 @@ public class CategoryController extends BaseController {
 			
 		}
 	
-	
 	@RequestMapping(value = "/san-pham/{id}/{currentPage}")
 	public ModelAndView Product(@PathVariable int id,@PathVariable String currentPage) {
 		_mvShare.setViewName("user/products/category");
@@ -51,14 +50,5 @@ public class CategoryController extends BaseController {
 		return _mvShare;
 	}
 
-	@RequestMapping(value = "/dacnh-sach-san-pham/{currentPage}")
-	public ModelAndView AllProduct(@PathVariable String currentPage) {
-		_mvShare.setViewName("user/products/product");
-		
-		int toltalData=categoryService.GetAllProducts().size();
-		PaginatesDto paginateInfo=paginateService.GetInfoPaginates(toltalData, totalProductPage, Integer.parseInt(currentPage));
-		_mvShare.addObject("paginateProduct",paginateInfo);
-		_mvShare.addObject("allProductsByPaginate",categoryService.AllProductsPaginate(totalProductPage,paginateInfo.getStart()));
-		return _mvShare;
-	}
+	
 }

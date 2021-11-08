@@ -28,5 +28,13 @@ public class UserDao extends BaseDao{
 		int insert =_jbdcTemplate.update(sql.toString());
 		return insert;
 	}
+	
+	
+	public User GetUserByAcc(User user) {
+		
+		String sql="SELECT *FROM users WHERE email='"+user.getEmail()+"'";
+		User result=_jbdcTemplate.queryForObject(sql, new MapperUser());
+		return result;
+	}
 
 }

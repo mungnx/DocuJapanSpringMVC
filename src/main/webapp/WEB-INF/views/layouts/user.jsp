@@ -40,13 +40,22 @@
 							class="icon-youtube"></span></a> <a href="#"><span
 							class="icon-tumblr"></span></a>
 					</div>
-					<a class="active" href="/DocuJapan/trang-chu"> <span class="icon-home"></span>
-						Home
-					</a> <a href="#"><span class="icon-user"></span> My Account</a> <a
-						href="<c:url value="/dang-ky"/>"><span class="icon-edit"></span> Dang ky </a> <a href="contact.html"><span class="icon-envelope"></span>
-						Contact us</a> <a href="<c:url value="/gio-hang/"/>"><span
-						class="icon-shopping-cart"></span> ${TotalQuantyCart } San pham - <span
-						class="badge badge-warning"> <fmt:formatNumber type="number" groupingUsed="true" value="${TotalPriceCart }" /> đ </span></a>
+					<a  href="/DocuJapan/trang-chu"> <span class="icon-home"></span>
+						ホームページ
+					</a> 
+					
+					<c:if test="${not empty LoginInfo }">
+					<a href="#"><span class="icon-user"></span>こんにちは！ ${ LoginInfo.userName}さん</a>
+					<a href="<c:url value="/dang-xuat"/>"><span class="icon-lock"></span>
+					ログアウト</a></c:if>
+					
+					<c:if test="${empty LoginInfo }">
+					 <a href="<c:url value="/dang-ky"/>"><span class="icon-edit"></span>アカウント登録 - ログイン </a> 
+					 </c:if>
+					 <a href="contact.html"><span class="icon-envelope"></span>
+						連絡</a> <a href="<c:url value="/gio-hang/"/>"><span
+						class="icon-shopping-cart"></span> ${TotalQuantyCart } 商品 - <span 
+						class="badge badge-warning"> <fmt:formatNumber type="number" groupingUsed="true" value="${TotalPriceCart }" /> ¥ </span></a>
 				</div>
 			</div>
 		</div>
@@ -80,8 +89,7 @@ Footer
 					href="#"><img src="<c:url value="/assets/user/img/visa.png"/>"  alt="payment"></a> <a
 					href="#"><img src="<c:url value="/assets/user/img/disc.png" />" alt="payment"></a>
 			</p>
-			<span>Copyright &copy; 2013<br> bootstrap ecommerce
-				shopping template
+			<span>Copyright &copy; 2021<br> アルプスビジネスサービス・グエンスンムン
 			</span>
 		</div>
 	</div>
@@ -91,10 +99,10 @@ Footer
 	<script src="<c:url value="/assets/user/js/bootstrap.min.js"/>"></script>
 	<script src="<c:url value="/assets/user/js/jquery.easing-1.3.min.js"/>"></script>
 	<script src="<c:url value="/assets/user/js/jquery.scrollTo-1.4.3.1-min.js"/>"></script>
-	<script src="<c:url value="/assets/user/js/shop.js"/>"></script>
+	<script src="<c:url value="/assets/user/js/shop.js"/>"></script>	
 
-	
 	<decorator:getProperty property= "page.script"></decorator:getProperty>
 	
+
 </body>
 </html>

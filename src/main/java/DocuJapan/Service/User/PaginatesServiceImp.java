@@ -26,7 +26,7 @@ public class PaginatesServiceImp {
 	}
 	private int FindStart(int currentPage, int limit) {
 
-		return ((currentPage-1)*limit)+1;
+		return ((currentPage-1)*limit);
 	}
 	private int SetInfoTotalPage(int toltalData, int limit) {
 		int totalPage=0;
@@ -38,7 +38,7 @@ public class PaginatesServiceImp {
 	
 	
 	public int CheckCurrentPage(int currentPage, int totalPage) {
-		if(currentPage<1) {
+		if(currentPage<=1) {
 			return 1;
 		}
 		if(currentPage>totalPage) {

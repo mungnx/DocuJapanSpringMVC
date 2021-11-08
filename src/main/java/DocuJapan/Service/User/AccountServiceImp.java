@@ -13,11 +13,24 @@ public class AccountServiceImp {
 	
 	@Autowired
 	UserDao userDao=new UserDao();
+	
 	public int AddAccount(User user) {
 		
 		user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12)));
 		return userDao.AddAccount(user);
 	}
 
-	
+	public User CheckAccount(User user) {
+		String password=user.getPassword();
+		user=userDao.GetUserByAcc(user);
+		if(user!=null) {
+			if(BCrypt.checkpw(password, user.getPassword())) {
+				return user;
+			}
+			else {
+				return null;
+			}
+		}		
+		return null;
+	}
 }
