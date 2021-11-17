@@ -50,6 +50,5 @@ public class Categories {
 		this.name = name;
 		this.caption = caption;
 	}
-	
 	 
 }

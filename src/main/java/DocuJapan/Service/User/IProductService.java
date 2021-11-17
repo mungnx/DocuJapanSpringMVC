@@ -10,4 +10,5 @@ public interface IProductService {
 	public ProductsDto GetProductById(int id);
 	public List<ProductsDto> GetProductByIdCategory(int id);
 	public List<ProductsDto> GetAllProducts();
+	public int DeleteProduct(int id);
 }

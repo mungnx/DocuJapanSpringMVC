@@ -146,5 +146,64 @@ public List<ProductsDto> GetProductById(int id) {
 		ProductsDto product=_jbdcTemplate.queryForObject(sql, new ProductsDtoMapper());
 		return product;
 	}
+	public int DeleteProduct(int id) {
+		String sql = "DELETE  FROM products WHERE id=" + id;
+		return _jbdcTemplate.update(sql);
+	}
+	public int AddProduct(ProductsDto product) {
+		StringBuffer sql=new StringBuffer();
+		sql.append("INSERT into products");
+		sql.append("(" );
+		sql.append("id_category,");
+		sql.append("name,");
+		sql.append("price,");
+		sql.append("sale,");
+		sql.append("title,");
+		sql.append("highlight,");
+		sql.append("new_product,");
+		sql.append("detail,");
+		sql.append("created_at,");
+		sql.append("updated_at,");
+		sql.append("img");
+		sql.append(") ");
+		sql.append("VALUES ");
+		sql.append("(");
+		sql.append("'"+product.getId_category()+"',");
+		sql.append("'"+product.getName()+"', ");
+		sql.append("'"+product.getPrice()+"',");
+		sql.append("'"+product.getSale()+"', ");
+		sql.append("'"+product.getTitle()+"',");
+		sql.append("'"+product.isHighlight()+"', ");
+		sql.append("'"+product.isNew_product()+"',");
+		sql.append("'"+product.getDetail()+"', ");
+		sql.append("'"+product.getCreated_at()+"',");
+		sql.append("NOW(), ");
+		sql.append("'"+product.getImg()+"' ");
+		sql.append(")");
+		
+		int insert =_jbdcTemplate.update(sql.toString());
+		return insert;
+	}
+	public int UpdateProduct(ProductsDto product) {
+		StringBuffer sql=new StringBuffer();
+		sql.append("UPDATE products");
+		sql.append(" SET" );
+		sql.append(" id_category= '"+product.getId_category()+"',");
+		sql.append(" size= '"+product.getSize()+"',");
+		sql.append(" name= '"+product.getName()+"',");
+		sql.append(" price= '"+product.getPrice()+"',");
+		sql.append(" sale= '"+product.getSale()+"',");
+		sql.append(" title= '"+product.getTitle()+"',");
+		sql.append(" highlight= '"+product.isHighlight()+"',");
+		sql.append(" new_product= '"+product.isNew_product()+"',");
+		sql.append(" detail= '"+product.getDetail()+"',");
+		sql.append(" created_at= '"+product.getCreated_at()+"',");
+		sql.append(" updated_at= NOW(),");
+		sql.append(" img= '"+product.getImg()+"'");
+		sql.append(" WHERE");
+		sql.append(" id= "+product.getId_product());
+		
+		return _jbdcTemplate.update(sql.toString());
+	}
 	
 }

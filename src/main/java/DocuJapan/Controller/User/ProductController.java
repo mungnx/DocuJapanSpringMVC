@@ -15,29 +15,6 @@ import DocuJapan.Service.User.ProductServiceImp;
 public class ProductController extends BaseController{
 	@Autowired
 	ProductServiceImp productService;
-	
-	@RequestMapping(value= "danh-sach-san-pham")
-	public ModelAndView Index() {
-		_mvShare.setViewName("user/products/product");
-		_mvShare.addObject("product",productService.GetAllProducts());
-		_mvShare.addObject("categories",_homeService.GetDataCategories());
-		
-		return _mvShare;
-		
-	}
-
-	
-	@RequestMapping(value= {"chi-tiet-san-pham/{id}"})
-	public ModelAndView Index(@PathVariable int id) {
-		_mvShare.setViewName("user/products/product_categories");
-		_mvShare.addObject("productById",productService.GetProductById(id));
-		
-		_mvShare.addObject("productByCategory",productService.GetProductByIdCategory(
-				productService.GetProductById(id).getId_category()));
-		return _mvShare;
-		
-	}
-	
 
 	@Autowired
 	private CategoryServiceImp categoryService;
@@ -49,13 +26,26 @@ public class ProductController extends BaseController{
 	@RequestMapping(value = "/danh-sach-san-pham/{currentPage}")
 	public ModelAndView AllProduct(@PathVariable String currentPage) {
 		_mvShare.setViewName("user/products/product");
-		
+		_mvShare.addObject("categories",_homeService.GetDataCategories());
 		int toltalData=productService.GetAllProducts().size();
 		PaginatesDto paginateAll=paginateService.GetInfoPaginates(toltalData, 18, Integer.parseInt(currentPage));
 		_mvShare.addObject("paginateAll",paginateAll);
 		_mvShare.addObject("allProductsPaginate",categoryService.AllProductsPaginate(18,paginateAll.getStart()));
 		return _mvShare;
 	}
+
+	@RequestMapping(value= {"chi-tiet-san-pham/{id}"})
+	public ModelAndView Index(@PathVariable int id) {
+		_mvShare.setViewName("user/products/product_detail");
+		_mvShare.addObject("productById",productService.GetProductById(id));
+		
+		_mvShare.addObject("productByCategory",productService.GetProductByIdCategory(
+				productService.GetProductById(id).getId_category()));
+		return _mvShare;
+		
+	}
+	
+
 
 	
 }

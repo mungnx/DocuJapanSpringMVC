@@ -24,7 +24,7 @@ public class CategoryController extends BaseController {
 	
 	@RequestMapping(value = "/san-pham/{id}")
 	public ModelAndView ProductById(@PathVariable int id) {
-		_mvShare.setViewName("user/products/category");
+		_mvShare.setViewName("user/products/product_by_category");
 		
 		_mvShare.addObject("idCategory",id);
 		_mvShare.addObject("categoryById",_homeService.GetCategoriesById(id));
@@ -39,7 +39,7 @@ public class CategoryController extends BaseController {
 	
 	@RequestMapping(value = "/san-pham/{id}/{currentPage}")
 	public ModelAndView Product(@PathVariable int id,@PathVariable String currentPage) {
-		_mvShare.setViewName("user/products/category");
+		_mvShare.setViewName("user/products/product_by_category");
 		
 		_mvShare.addObject("idCategory",id);
 		_mvShare.addObject("categoryById",_homeService.GetCategoriesById(id));

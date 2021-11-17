@@ -31,4 +31,21 @@ public class ProductServiceImp implements IProductService {
 		return productDao.GetAllProducts();
 	}
 
+
+	public int DeleteProduct(int id) {
+		return productDao.DeleteProduct(id);
+	
+	}
+
+
+	public int AddProduct(ProductsDto product) {
+		return productDao.AddProduct(product);
+	}
+
+
+	public int UpdateProduct(ProductsDto product) {
+		return productDao.UpdateProduct(product);
+		
+	}
+
 }

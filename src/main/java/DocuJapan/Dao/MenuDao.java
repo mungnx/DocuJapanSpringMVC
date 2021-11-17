@@ -13,7 +13,7 @@ public class MenuDao extends BaseDao{
 	
 	public List<Menus> GetDataMenus() {
 		List<Menus> list = new ArrayList<Menus>();
-		String sql = "SELECT	* FROM menu ";
+		String sql = "SELECT	* FROM menu order by id";
 		list = _jbdcTemplate.query(sql, new MapperMenus());
 		return list;
 }
