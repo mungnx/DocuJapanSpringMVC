@@ -1,11 +1,18 @@
 package DocuJapan.Entity;
 
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class Slides {
 
 	private int id;
 		private String img;
 		private String caption;
 		private String content;
+		
+
+		private MultipartFile file;
+		
 		public Slides(int id, String img, String caption, String content) {
 			super();
 			this.id = id;
@@ -63,6 +70,12 @@ public class Slides {
 		 */
 		public void setContent(String content) {
 			this.content = content;
+		}
+		public MultipartFile getFile() {
+			return file;
+		}
+		public void setFile(MultipartFile file) {
+			this.file = file;
 		}
 		
 	

@@ -1,7 +1,5 @@
 package DocuJapan.Controller.Admin;
 
-import java.io.UnsupportedEncodingException;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,8 +56,7 @@ public class CategoryManagerController extends AdminController{
 	}
 	
 	@RequestMapping(value = "/admin/category-save", method = RequestMethod.POST)
-	public String SaveCategory(Categories category,HttpServletRequest request) throws UnsupportedEncodingException {
-		request.setCharacterEncoding("UTF-8");
+	public String SaveCategory(Categories category,HttpServletRequest request) {
 		if (category.getId()==0) {
 			categoryService.AddCategory(category);
 			

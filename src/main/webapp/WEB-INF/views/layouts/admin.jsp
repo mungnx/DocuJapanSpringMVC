@@ -20,6 +20,8 @@
 <link href="<c:url value="/assets/admin/css/style.css"/>" rel="stylesheet" type="text/css" media="all"/>
 <!--js-->
 <script src="<c:url value="/assets/admin/js/jquery-2.1.1.min.js"/>"></script> 
+<script src="<c:url value="/assets/admin/js/dtsel.js"/>"></script> 
+<link href="<c:url value="/assets/admin/css/dtsel.css"/>" rel="stylesheet" type="text/css"> 
 <!--icons-css-->
 <link href="<c:url value="/assets/admin/css/font-awesome.css"/>" rel="stylesheet"> 
 <link rel="shortcut icon" href="<c:url value="/assets/user/ico/favicon.ico" />">
@@ -73,7 +75,7 @@
 		            <li id="menu-academico-avaliacoes" ><a href="<c:url value="/admin/#"/>">Sign Up</a></li>		           
 		          </ul>
 		        </li>
-		         <li><a href="<c:url value="/admin/#"/>"><i class="fa fa fa-cogs"></i><span>Slides</span></a></li>
+		         <li><a href="<c:url value="/admin/slide-manager"/>"><i class="fa fa fa-cogs"></i><span>Slides</span></a></li>
 		        <li><a href="<c:url value="/admin/product-manager"/>"><i class="fa fa-shopping-cart"></i><span>Products</span></a></li>
 		         <li><a href="<c:url value="/admin/category-manager"/>"><i class="fa fa-book nav_icon"></i><span>Categories</span></a></li>
 		        <li><a href="#"><i class="fa fa-envelope"></i><span>Mailbox</span><span class="fa fa-angle-right" style="float: right"></span></a>
@@ -108,6 +110,15 @@ $(".sidebar-icon").click(function() {
   }               
                 toggle = !toggle;
             });
+</script>
+
+<script type="text/javascript">
+instance = new dtsel.DTS('input[name="created_at"]',  {
+    direction: 'BOTTOM',
+    dateFormat: "yyyy-mm-dd",
+    showTime: false,
+    timeFormat: "HH:MM:SS"
+});
 </script>
 <!--scrolling js
 		<script src="<c:url value="/assets/admin/js/jquery.nicescroll.js"/>"></script>-->

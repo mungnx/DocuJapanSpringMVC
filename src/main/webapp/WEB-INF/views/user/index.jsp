@@ -181,7 +181,7 @@ New Products
 			</div>
 			<hr>
 			<div class="well well-small">
-				<a class="btn btn-mini pull-right" href="<c:url value="/danh-sach-san-pham"/>">もっと見る <span
+				<a class="btn btn-mini pull-right" href="<c:url value="/danh-sach-san-pham/1"/>">もっと見る <span
 					class="icon-plus"></span></a> 全ての商品			
 		</div>
 	</div>

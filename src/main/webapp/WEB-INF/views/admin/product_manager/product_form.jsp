@@ -49,7 +49,8 @@
                 <tr>
                     <th>Image</th>
                     <th>Product Name</th>
-                    <th>Price</th>                  
+                    <th>Price</th>
+                    <th>Sale</th>                
                     <th>New Product</th>
                     <th>HighLight</th>
                     <th>Created</th>
@@ -64,6 +65,7 @@
                 <td><img width="80" height="80"  src="<c:url value="/assets/user/img/${item.img }"/>" alt="${item.id_product }"></td>
                   <td>${item.name }</td>
                   <td><fmt:formatNumber type="number" groupingUsed="true" value="${item.price }" /> ¥</td>
+                  <td><fmt:formatNumber type="number" groupingUsed="true" value="${item.sale }" /> ¥</td>
                   <td>${item.new_product }</td>
                   <td>${item.highlight }</td>
                   <td>${item.created_at }</td>

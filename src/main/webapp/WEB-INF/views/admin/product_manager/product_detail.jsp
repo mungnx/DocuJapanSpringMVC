@@ -17,7 +17,7 @@
 				modelAttribute="product">
 				<form:hidden path="id_product" />
 				<div class="form-row">
-					<div class="form-group col-md-6">
+					<div class="form-group col-md-4">
 						<label class="control-label" for="inputFname">Product Name<sup>*</sup></label>
 						<form:input name="cname" type="text" class="form-control"
 							id="inputFname" placeholder="Product name input here" path="name" />
@@ -34,42 +34,28 @@
 						<label class="control-label" for="inputFname">Price<sup>*</sup></label>
 						<form:input name="cname" type="text" class="form-control"
 							id="inputFname" placeholder="Price input here" path="price" />
-						<label class="control-label" for="inputFname">Product Sale<sup>*</sup></label>
+						<label class="control-label" for="inputFname">Product Sale</label>
 						<form:input name="cname" type="text" class="form-control"
 							id="inputFname" placeholder="Product sale input here" path="sale" />
 							
 						<label class="control-label" for="inputFname">Size<sup>*</sup></label>
 						<form:input name="cname" type="text" class="form-control"
 							id="inputFname" placeholder="Product size(L,M,S)" path="size" />
-							<hr/>
-						<label class="control-label" for="inputFname">New Product<sup>*</sup></label>
+						<label class="control-label" for="inputFname">New Product :  </label>
 						
 						 Yes <form:radiobutton path="new_product" value="true"/>  
         				 No <form:radiobutton path="new_product" value="false"/>
-        				 
-						<label class="control-label" for="inputFname"> | HighLight<sup>*</sup></label>
+        				 <br/>
+						<label class="control-label" for="inputFname"> HighLight :  </label>
 						
 						Yes <form:radiobutton path="highlight" value="true" />
-						No <form:radiobutton path="highlight" value="false" />					
-						
-					</div>
-
-					<div class="form-group col-md-6">
-
-						<label class="control-label" for="inputFname">Detail<sup>*</sup></label>
-
-						<form:textarea name="ccaption" type="text" class="form-control"
-							id="inputFname" placeholder="Product detail" path="detail" />
-						<label class="control-label" for="inputFname">Short introduction<sup>*</sup></label>
-						<form:textarea name="cname" type="text" class="form-control"
-							id="inputFname" placeholder="Product introduction input here"
-							path="title" />
+						No <form:radiobutton path="highlight" value="false" />		
+						<br/>
 							<label class="control-label" for="inputFname">Created at<sup>*</sup>
 						</label>
-						<form:input name="cname" type="text" class="form-control"
-							id="inputFname" placeholder="Product create at 2020-04-09(YYYY-MM-DD)" path="created_at" />
-							<label class="control-label" for="inputFname">Updated at<sup>*</sup>
-						</label>
+						<form:input name="created_at" class="form-control"
+							placeholder="2020-04-09(YYYY-MM-DD)" path="created_at" />
+			
 						<form:hidden path="updated_at" />
 						
 						<label class="control-label" for="inputFname">Image<sup>*</sup>
@@ -78,7 +64,22 @@
 						<form:input name="cname" type="text" class="form-control"
 							id="inputFname" placeholder="Product image URL(.JPG, .PNG)" path="img" />
 						<img width="80" height="80"  src="<c:url value="/assets/user/img/${product.img }"/>" alt="${product.img }">
-						</div>
+						</div>			
+						
+					</div>
+
+					<div class="form-group col-md-8">
+
+						<label class="control-label" for="inputFname">Detail<sup>*</sup></label>
+
+						<form:textarea name="ccaption" type="text" class="form-control" rows="13"
+							id="inputFname" placeholder="Product detail" path="detail" />
+						<label class="control-label" for="inputFname">Short introduction<sup>*</sup></label>
+						<form:textarea name="cname" type="text" class="form-control" rows="7"
+							id="inputFname" placeholder="Product introduction input here"
+							path="title" />
+							<hr/>
+						
 						
 					<input type="submit" value="Save Product" class="btn btn-primary" />
 				</div>
