@@ -80,7 +80,7 @@ public class ProductManagerController extends AdminController {
 		 return _mvShare;
 			
 	}
-	
+	//image choice is not update
 	@RequestMapping(value = "/admin/product-save", method = RequestMethod.POST)
 	public String SaveProduct(ProductsDto product) {
 		if (product.getId_product()==0) {

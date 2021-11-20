@@ -1,13 +1,5 @@
 package DocuJapan.Controller.Admin;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,12 +16,10 @@ import DocuJapan.Service.User.SlideService;
 
 @Controller
 public class SlideManagerController extends AdminController{
-	 private static final String UPLOAD_DIRECTORY ="/assets/admin/img";
 	@Autowired
 	private SlideService slideService= new SlideService();
 	@Autowired
 	private SlidesDao slideDao= new SlidesDao();
-	
 	
 	@RequestMapping(value="/admin/slide-manager",method=RequestMethod.GET)
 	public ModelAndView Get() {
@@ -57,44 +47,31 @@ public class SlideManagerController extends AdminController{
 	@RequestMapping(value="/admin/edit-slide/{id}",method=RequestMethod.GET)
 	public ModelAndView Edit(@PathVariable int id,@ModelAttribute("slide")Slides slide) { 
 		slide=slideDao.getSlideById(id);
-		_mvShare.addObject("slide",slide);
+		_mvShare.addObject("slide",slide);		
 		 return _mvShare;
 			
 	}
 	
 	@RequestMapping(value = "/admin/slide-save", method = RequestMethod.POST)
-	public String Save(Slides slide,@RequestParam CommonsMultipartFile file,  
-	           HttpSession session) throws Exception
+	public String Save(Slides slide,@RequestParam CommonsMultipartFile file) throws Exception
 	{
-	
-		if (file != null && !file.isEmpty()) {
-			try {
-				ServletContext context = session.getServletContext();
-				String path = context.getRealPath(UPLOAD_DIRECTORY);
-				byte[] bytes = file.getBytes();
-
-				String filename = file.getOriginalFilename();
-
-				System.out.println(path + " " + filename);
-
-				File fileSever = new File(path + File.separator + filename);
-				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fileSever));
-				stream.write(bytes);
-				stream.flush();
-				stream.close();
-			
-				slide.setImg(filename);	
-				
-				if(slide.getId()!=0) {
-				slideService.UpdateSlide(slide);
-				}
-				else {
+				if(slide.getId()==0 && !slide.getFile().isEmpty()) {
+					slide.setImg(UpLoad(file));
 					slideService.AddSlide(slide);
+				}else {
+					if(slide.getFile().isEmpty()) 
+					{
+					slideService.UpdateSlide(slide);
+					}else 
+						{
+							slide.setImg(UpLoad(file));
+							slideService.UpdateSlide(slide);
+					}
+				
 				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+
 		return "redirect:/admin/slide-manager";
 	}
+	
+	
 }

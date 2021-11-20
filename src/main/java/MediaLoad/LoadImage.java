@@ -15,10 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns="/img/*")
 public class LoadImage extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String imagePath;
     @Override
 	public void init() throws ServletException {
-		imagePath=System.getProperty("catalina.home")+File.separator+"assets/user/img";
+		imagePath=System.getProperty("catalina.home")+File.separator+"assets/admin/img";
 	}
 
 	/**

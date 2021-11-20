@@ -30,8 +30,7 @@ public class CategoryManagerController extends AdminController{
 		return _mvShare;
 		
 	}
-	
-	
+		
 	@RequestMapping(value="/admin/del-category/{id}",method=RequestMethod.GET)
 	public String DeleteCategory(@PathVariable int id) { 
 		

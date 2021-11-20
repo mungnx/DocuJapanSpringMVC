@@ -79,8 +79,7 @@
 								<div class="item">
 							</c:if>
 							<img 
-								src="<c:url value="/assets/user/img/slide/${item.img }"/>"
-								alt="bootstrap ecommerce templates">
+								src="${pageContext.request.contextPath }/assets/admin/img/${item.img }" alt="bootstrap ecommerce templates">
 							<div class="carousel-caption">
 								<h4>${item.caption }</h4>
 								<p>

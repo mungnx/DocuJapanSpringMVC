@@ -15,7 +15,6 @@
 			   <form:form  action="/DocuJapan/admin/slide-save" method="POST" enctype="multipart/form-data" modelAttribute="slide" >
 			<form:hidden path="id" />
 			<form:hidden path="img" />
-		
 		 <div class="form-group col-md-6">
 			<label for="image">Choose Image</label>
 			<form:input path="file" name="file" id="fileToUpload" type="file" />
@@ -31,7 +30,7 @@
 	</form:form>    
       </div>
      <div class="clearfix"> </div>
-     <h3>${delstatus}</h3>
+     <h3>${status}</h3>
 </div>
 
 	 <div class="work-progres">
@@ -51,7 +50,8 @@
                  <td>${i.index +1 }</td>
                   <td>${item.caption }</td>
                   <td>${item.content }</td>
-                  <td><img width="160" height="80"  src="${pageContext.request.contextPath }/assets/admin/img/${item.img }" alt="${item.img }"></td>
+                  <td><img width="160" height="80" 
+                   src="${pageContext.request.contextPath }/assets/admin/img/${item.img }" alt="${item.img }"></td>
    
   				 <td><a href="<c:url value="/admin/edit-slide/${item.id } "/>">Edit</a>|
   				 <a href="<c:url value="/admin/del-slide/${item.id } "/>" onclick="return confirm('Delete slide?')">Delete</a>
