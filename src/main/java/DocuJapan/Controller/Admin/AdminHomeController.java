@@ -18,12 +18,6 @@ public class AdminHomeController extends AdminController {
 	}
 	
 
-@RequestMapping(value="/admin/dang-ky")
-public ModelAndView AdminRegister() {
-	
-	_mvShare.setViewName("/admin/account/login");
-	return _mvShare;
-}
 
 
 }

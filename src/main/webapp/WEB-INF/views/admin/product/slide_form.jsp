@@ -6,27 +6,44 @@
 <meta charset="UTF-8" >
 <title>Slide Manager</title>
 <body>
-<div class="inner-block">
+        <div class="page-container">	
+
+            <div class="left-content">
+
+                <div class="mother-grid-inner">
+
+                    <jsp:include page="../header.jsp"></jsp:include>
+
+                    <div class="inner-block">
 <div class="chit-chat-layer1">
 			<div class="pro-head" >
 			<h2> Slide Manager</h2>
 			</div>
-			<div class="form-row">
-			   <form:form  action="/DocuJapan/admin/slide-save" method="POST" enctype="multipart/form-data" modelAttribute="slide" >
-			<form:hidden path="id" />
-			<form:hidden path="img" />
-		 <div class="form-group col-md-6">
-			<label for="image">Choose Image</label>
-			<form:input path="file" name="file" id="fileToUpload" type="file" />
-	
+			<div class="form-group col-md-12">
+		<form:form  action="/DocuJapan/admin/slide-save" method="POST" enctype="multipart/form-data" modelAttribute="slide" >
+		
+	<div class="form-group col-md-6">
 			<label class="control-label" for="inputFname">Caption<sup>*</sup></label>
+			<br/>
 
 			<form:input name="ccaption" type="text" class="form-control" id="inputFname" placeholder="Nhap mo ta danh muc" path="caption" /> 
-			<label class="control-label" for="inputFname">Content<sup>*</sup></label>
+			<br/>
+			<label class="control-label" for="inputFname">Content<sup>*</sup></label><br/>
 
 			<form:input name="ccontent" type="text" class="form-control" id="inputFname" placeholder="Nhap content" path="content" /> 
-		 <input type="submit" value="Save" class="btn btn-primary" />    
+			<br/>
+		    
+			<input type="submit" value="Save" class="btn btn-primary" /> 
 	 </div>
+	 <div class="form-group col-md-6">
+		 	<form:hidden path="id" />
+			<form:hidden path="img" />
+			
+			<label for="image">Choose Image</label>
+			<form:input path="file" name="file" id="fileToUpload" type="file" />
+			
+	</div>
+	
 	</form:form>    
       </div>
      <div class="clearfix"> </div>
@@ -34,7 +51,7 @@
 </div>
 
 	 <div class="work-progres">
-        <table class="table table-borded table-hover " id="table-list">
+        <table class="table table-striped table-bordered table-sm table-hover" id="table-list">
             <thead class="table-dark">
                 <tr>
                     <th>No</th>
@@ -60,9 +77,18 @@
 				 </c:forEach>
             </tbody>
         </table>
-       
     </div>    
-
 		</div>
-		<div class="span1"> &nbsp;</div>	
-</body>
+
+                    <jsp:include page="../footer.jsp"></jsp:include>
+
+                </div>
+
+            </div>
+
+            <jsp:include page="../navigation.jsp"></jsp:include>
+
+        </div>
+
+    </body>
+                   

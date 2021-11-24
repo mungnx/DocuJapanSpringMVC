@@ -25,7 +25,7 @@ public class CategoryManagerController extends AdminController{
 	@RequestMapping(value="/admin/category-manager",method=RequestMethod.GET)
 	public ModelAndView GetCategory() {
 		_mvShare.addObject("categories",_homeService.GetDataCategories());
-		_mvShare.setViewName("/admin/product_manager/category_form");
+		_mvShare.setViewName("/admin/product/category_form");
 		_mvShare.addObject("category",new Categories());
 		return _mvShare;
 		
@@ -55,12 +55,16 @@ public class CategoryManagerController extends AdminController{
 	}
 	
 	@RequestMapping(value = "/admin/category-save", method = RequestMethod.POST)
-	public String SaveCategory(Categories category,HttpServletRequest request) {
-		if (category.getId()==0) {
+	public String SaveCategory(Categories category,HttpServletRequest request) {			
+		try {
+		if (category.getId()==0 && category.getName()!=null) {
 			categoryService.AddCategory(category);
 			
 		} else {
 		categoryService.UpdateCategory(category);
+		}
+		}catch(Exception e) {
+			System.out.println("Is empty");
 		}
 	return "redirect:/admin/category-manager";
 	}

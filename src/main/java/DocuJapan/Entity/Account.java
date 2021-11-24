@@ -1,6 +1,6 @@
 package DocuJapan.Entity;
 
-public class User {
+public class Account {
 
 	private int id;
 	private String userName;
@@ -37,7 +37,7 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public User(int id, String userName, String password, String email, String address) {
+	public Account(int id, String userName, String password, String email, String address) {
 		super();
 		this.id = id;
 		this.userName = userName;
@@ -45,7 +45,7 @@ public class User {
 		this.email = email;
 		this.address = address;
 	}
-	public User() {
+	public Account() {
 		super();
 	}
 	

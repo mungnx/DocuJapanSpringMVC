@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import DocuJapan.Entity.User;
+import DocuJapan.Entity.Account;
 import DocuJapan.Service.User.AccountServiceImp;
 
 @Controller
@@ -23,28 +23,37 @@ public class UserController extends BaseController{
 	public ModelAndView Register() {
 		
 		_mvShare.setViewName("/user/account/register");
-		_mvShare.addObject("user",new User());
+		_mvShare.addObject("user",new Account());
 		return _mvShare;
 	}
 	
 	
 	
 	@RequestMapping(value="/dang-ky",method=RequestMethod.POST)
-	public ModelAndView CreateAcc(@ModelAttribute("user") User user) { 
-		int count=accountService.AddAccount(user);
+	public ModelAndView CreateAcc(HttpSession session,@ModelAttribute("user") Account user) { 
+		
+		try {
+			int count=accountService.AddAccount(user);
 		if(count>0) {
 			_mvShare.addObject("status","Register succeful!");
+			_mvShare.setViewName("redirect:trang-chu");
+			session.setAttribute("LoginInfo", user);
 		}
 		else {
+			_mvShare.setViewName("user/account/register");
 			_mvShare.addObject("status","Register Fail!!");
 		}
-		_mvShare.setViewName("user/account/register");
-		
+		}
+		catch(Exception e) {
+			_mvShare.setViewName("user/account/register");
+			_mvShare.addObject("status","Register Fail! Email was exited!");
+			System.out.println("Trung email");
+		}
 		return _mvShare; 
 	}
 	
 	@RequestMapping(value="/dang-nhap",method=RequestMethod.POST)
-	public ModelAndView Login(HttpSession session,@ModelAttribute("user") User user) { 
+	public ModelAndView Login(HttpSession session,@ModelAttribute("user") Account user) { 
 	
 		user=accountService.CheckAccount(user);
 		
@@ -54,7 +63,6 @@ public class UserController extends BaseController{
 	}
 	else {
 		_mvShare.addObject("statusLogin", "Login fail !!");
-		
 	}
 	return _mvShare; 
 	}

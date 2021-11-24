@@ -1,14 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>お会計</title>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Checkout</title>
+    </head>
 
 <body>
-
+ <div class="container">
+         
+             <jsp:include page="../header.jsp"></jsp:include>
+            
 <div class="row">
 <div id="sidebar" class="span3">
 
@@ -86,5 +92,7 @@
 
 </div>
 
+</div>
+<jsp:include page="../footer.jsp"></jsp:include>
 </div>
 </body>

@@ -24,7 +24,7 @@ public class SlideManagerController extends AdminController{
 	@RequestMapping(value="/admin/slide-manager",method=RequestMethod.GET)
 	public ModelAndView Get() {
 		_mvShare.addObject("slides",_homeService.GetDataSlide());
-		_mvShare.setViewName("/admin/manages/slide_form");
+		_mvShare.setViewName("/admin/product/slide_form");
 		_mvShare.addObject("slide",new Slides());
 		return _mvShare;
 		

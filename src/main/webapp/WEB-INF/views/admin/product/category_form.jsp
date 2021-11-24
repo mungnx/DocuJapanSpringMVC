@@ -6,6 +6,13 @@
 <meta charset="UTF-8" >
 <title>Category Manager</title>
 <body>
+<div class="page-container">	
+
+            <div class="left-content">
+
+                <div class="mother-grid-inner">
+
+                    <jsp:include page="../header.jsp"></jsp:include>
 <div class="inner-block">
 <div class="chit-chat-layer1">
 			<div class="pro-head" >
@@ -36,7 +43,7 @@
 </div>
 
 	 <div class="work-progres">
-        <table class="table table-borded table-hover " id="table-list">
+        <table class="table table-hover table-bordered " id="table-list">
             <thead class="table-dark">
                 <tr>
                     <th>No</th>
@@ -63,5 +70,15 @@
     </div>    
 
 		</div>
-		<div class="span1"> &nbsp;</div>	
+		<div class="span1"> &nbsp;</div>
+		
+		 <jsp:include page="../footer.jsp"></jsp:include>
+
+                </div>
+
+            </div>
+
+            <jsp:include page="../navigation.jsp"></jsp:include>
+
+        </div>	
 </body>

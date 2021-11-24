@@ -1,8 +1,3 @@
-<%-- 
-    Document   : footer
-    Created on : 28-Nov-2018, 2:28:24 PM
-    Author     : TVD
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

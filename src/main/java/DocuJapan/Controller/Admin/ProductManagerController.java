@@ -1,5 +1,7 @@
 package DocuJapan.Controller.Admin;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -37,7 +39,7 @@ public class ProductManagerController extends AdminController {
 	
 	@RequestMapping(value = "/admin/product-manager/{currentPage}")
 	public ModelAndView AllProductPagination(@PathVariable int currentPage) {
-		_mvShare.setViewName("admin/product_manager/product_form");
+		_mvShare.setViewName("admin/product/product_form");
 		_mvShare.addObject("categories",_homeService.GetDataCategories());
 		int toltalData=productService.GetAllProducts().size();
 		PaginatesDto paginateAll=paginateService.GetInfoPaginates(toltalData, 15,currentPage);
@@ -65,7 +67,7 @@ public class ProductManagerController extends AdminController {
 	
 	@RequestMapping(value="/admin/product-detail",method=RequestMethod.GET)
 	public ModelAndView AddProduct(@ModelAttribute("product")ProductsDto product) { 
-		_mvShare.setViewName("/admin/product_manager/product_detail");
+		_mvShare.setViewName("/admin/product/product_detail");
 		_mvShare.addObject("categories",_homeService.GetDataCategories());
 		_mvShare.addObject("product",new ProductsDto());
 		 return _mvShare;
@@ -75,20 +77,27 @@ public class ProductManagerController extends AdminController {
 	public ModelAndView EditProduct(@PathVariable int id,@ModelAttribute("product")ProductsDto product) { 
 		product=productDao.GetProductById(id).get(0);
 		_mvShare.addObject("categories",_homeService.GetDataCategories());
-		_mvShare.setViewName("/admin/product_manager/product_detail");
+		_mvShare.setViewName("/admin/product/product_detail");
 		_mvShare.addObject("product",product);
 		 return _mvShare;
 			
 	}
+	
 	//image choice is not update
 	@RequestMapping(value = "/admin/product-save", method = RequestMethod.POST)
 	public String SaveProduct(ProductsDto product) {
+		try {
 		if (product.getId_product()==0) {
-			
-				productService.AddProduct(product);
+			product.setCreated_at(new Date());
+			product.setUpdated_at(new Date());
+			productService.AddProduct(product);
 		} else {
 		productService.UpdateProduct(product);
 		}
+		}catch(Exception e) {
+			
+		}
+		
 	return "redirect:/admin/product-manager";
 	}
 	

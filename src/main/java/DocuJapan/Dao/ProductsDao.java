@@ -45,7 +45,7 @@ public class ProductsDao  extends BaseDao{
 		}
 		sql.append(" order by random()");
 		if(highlight) {
-			sql.append("limit 9");
+			sql.append("limit 18");
 		}
 		if(new_product) {
 			sql.append("limit 12");
@@ -124,7 +124,7 @@ public  List<ProductsDto> GetDataProductsPaginate(int id,int toltalPage, int off
 		
 		return listProducts;
 	}
-//Phan trang toan bo san pham
+//All Product pagination
 public  List<ProductsDto> AllProductsPaginate(int toltalPage, int offset){	
 	List<ProductsDto> listProduct=new ArrayList<ProductsDto>();	
 	String sql=SqlProductsPaginates(toltalPage, offset);
@@ -177,7 +177,7 @@ public List<ProductsDto> GetProductById(int id) {
 		sql.append("'"+product.isNew_product()+"',");
 		sql.append("'"+product.getDetail()+"', ");
 		sql.append("'"+product.getCreated_at()+"',");
-		sql.append("NOW(), ");
+		sql.append("'"+product.getUpdated_at()+"',");
 		sql.append("'"+product.getImg()+"' ");
 		sql.append(")");
 		

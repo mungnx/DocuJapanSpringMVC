@@ -3,12 +3,12 @@ package DocuJapan.Dao;
 import org.springframework.stereotype.Repository;
 
 import DocuJapan.Entity.MapperUser;
-import DocuJapan.Entity.User;
+import DocuJapan.Entity.Account;
 
 @Repository
 public class UserDao extends BaseDao{
 
-	public int AddAccount(User user) {
+	public int AddAccount(Account user) {
 		StringBuffer sql=new StringBuffer();
 		sql.append("INSERT into users");
 		sql.append("(" );
@@ -30,10 +30,10 @@ public class UserDao extends BaseDao{
 	}
 	
 	
-	public User GetUserByAcc(User user) {
+	public Account GetUserByAcc(Account user) {
 		
 		String sql="SELECT *FROM users WHERE email='"+user.getEmail()+"'";
-		User result=_jbdcTemplate.queryForObject(sql, new MapperUser());
+		Account result=_jbdcTemplate.queryForObject(sql, new MapperUser());
 		return result;
 	}
 

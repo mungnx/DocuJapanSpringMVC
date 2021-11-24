@@ -1,6 +1,6 @@
 package DocuJapan.Dto;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class ProductsDto {
 	private int id_product;
@@ -107,6 +107,7 @@ public class ProductsDto {
 	}
 	public ProductsDto() {
 		super();
+		setImg("404.png");
 	}
 	
 

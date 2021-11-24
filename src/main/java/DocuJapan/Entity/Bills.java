@@ -1,5 +1,7 @@
 package DocuJapan.Entity;
 
+import java.util.Date;
+
 public class Bills {
 	private int id;
 	private String username;
@@ -9,6 +11,8 @@ public class Bills {
 	private double total;
 	private int quanty;
 	private String note;
+	private Date created_at;
+	private Date close_at;
 	public int getId() {
 		return id;
 	}
@@ -57,8 +61,12 @@ public class Bills {
 	public void setNote(String note) {
 		this.note = note;
 	}
-	public Bills(int id, String username, String phone, String address, String email, double total,
-			int quanty, String note) {
+	
+	public Bills() {
+		super();
+	}
+	public Bills(int id, String username, String phone, String address, String email, double total, int quanty,
+			String note, Date created_at, Date close_at) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -68,9 +76,20 @@ public class Bills {
 		this.total = total;
 		this.quanty = quanty;
 		this.note = note;
+		this.created_at = created_at;
+		this.setClose_at(close_at);
 	}
-	public Bills() {
-		super();
+	public Date getCreated_at() {
+		return created_at;
+	}
+	public void setCreated_at(Date created_at) {
+		this.created_at = created_at;
+	}
+	public Date getClose_at() {
+		return close_at;
+	}
+	public void setClose_at(Date close_at) {
+		this.close_at = close_at;
 	}
 	
 	

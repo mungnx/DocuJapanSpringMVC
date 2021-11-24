@@ -1,11 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
-<meta charset="ISO-8859-1">
-<title>買物かご</title>
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cart</title>
+    </head>
 <body>
+
+ <div class="container">
+         
+             <jsp:include page="../header.jsp"></jsp:include>
+            
 <div class="row">
 	<div class="span12">
     <ul class="breadcrumb">
@@ -35,9 +44,12 @@
                   <td><img width="100" src="<c:url value="/assets/user/img/${item.value.product.img}"/>" alt=""></td>
                   <td>${item.value.product.name }</td>
    
-            		<td><fmt:formatNumber type="number" groupingUsed="true" value="${item.value.product.price }" /> đ</td>
+            		<td><fmt:formatNumber type="number" groupingUsed="true" value="${item.value.product.price }" /> ¥
+            		<p class="m-0 text-muted">
+					Sale: <fmt:formatNumber type="number" groupingUsed="true" value="${item.value.product.sale}" /> ¥</p>
+            		</td>
                   <td>
-					<input type="number" min="0" max="10" class="span1" style="max-width:34px" placeholder="1" id="quanty-cart-${item.key }" size="16" type="text" value="${item.value.quanty }">
+					<input type="number" min="1" max="5" class="span1" style="max-width:34px" placeholder="1" id="quanty-cart-${item.key }" size="16" type="text" value="${item.value.quanty }">
 				  </td>
 				  <td>
 					<button data-id="${item.key }" class="btn btn-mini btn-danger edit-cart" >
@@ -59,7 +71,8 @@
 </div>
 </div>
 </div>
-<content tag="script">
+
+<jsp:include page="../footer.jsp"></jsp:include>
 <script>
 $(".edit-cart").on("click",function(){
 	var id=$(this).data("id");
@@ -67,5 +80,5 @@ $(".edit-cart").on("click",function(){
 	window.location="EditCart/"+id+"/"+quanty;
 });
 </script>
-</content>
+</div>
 </body>

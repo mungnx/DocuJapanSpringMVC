@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import DocuJapan.Dao.UserDao;
-import DocuJapan.Entity.User;
+import DocuJapan.Entity.Account;
 
 @Service
 public class AccountServiceImp {
@@ -14,13 +14,14 @@ public class AccountServiceImp {
 	@Autowired
 	UserDao userDao=new UserDao();
 	
-	public int AddAccount(User user) {
+	public int AddAccount(Account user) {
 		
 		user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12)));
+
 		return userDao.AddAccount(user);
 	}
 
-	public User CheckAccount(User user) {
+	public Account CheckAccount(Account user) {
 		String password=user.getPassword();
 		user=userDao.GetUserByAcc(user);
 		if(user!=null) {

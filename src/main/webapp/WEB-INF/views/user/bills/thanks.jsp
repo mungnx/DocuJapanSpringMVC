@@ -6,15 +6,20 @@
 <title>Thank you</title>
 
 <body>
+<div class="container">
+         
+             <jsp:include page="../header.jsp"></jsp:include>
 <div class="row">
 	<div class="span12">
     <ul class="breadcrumb">
 		<li><a href="index.html">トップ</a> <span class="divider">/</span></li>
 		<li class="active">お会計</li>
     </ul> <br/>
-	<h2>ご注文ありがとうございます！</h2><br/>
+	<h2 style="text-align:center">ご注文ありがとうございます！</h2><br/>
 	<a href="<c:url value="/trang-chu"/>" class="shopBtn btn-large"><span class="icon-arrow-left"></span> ショッピング続き </a>
 	<a href="<c:url value="/check-out"/>" class="shopBtn btn-large pull-right">お買い物履歴を確認 <span class="icon-arrow-right"></span></a>
 </div>
+</div>
+<jsp:include page="../footer.jsp"></jsp:include>
 </div>
 </body>

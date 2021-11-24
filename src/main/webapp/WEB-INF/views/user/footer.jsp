@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-  <!-- 
-Clients 
--->
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+  <body>
 		<section class="our_client">
 			<hr class="soften" />
 			
@@ -52,5 +51,21 @@ Clients
 					お問い合わせ電話番号や住所などはフィクションです。<br>
 					ご覧いただきありがとうございます！
 				</div>
+				
+				
 			</div>
+			<span>Copyright &copy; 2021<br> アルプスビジネスサービス・グエンスンムン
+			</span>
 		</footer>
+				<!--
+Footer
+-->
+	<a href="#" class="gotop"><i class="icon-double-angle-up"></i></a>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="<c:url value="/assets/user/js/jquery.js"/>"></script>
+	<script src="<c:url value="/assets/user/js/bootstrap.min.js"/>"></script>
+	<script src="<c:url value="/assets/user/js/jquery.easing-1.3.min.js"/>"></script>
+	<script src="<c:url value="/assets/user/js/jquery.scrollTo-1.4.3.1-min.js"/>"></script>
+	<script src="<c:url value="/assets/user/js/shop.js"/>"></script>	
+
+	</body>	

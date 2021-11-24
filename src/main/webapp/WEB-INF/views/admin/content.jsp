@@ -1,12 +1,5 @@
-<%-- 
-    Document   : content
-    Created on : 28-Nov-2018, 2:32:02 PM
-    Author     : TVD
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>content</title>
@@ -278,4 +271,4 @@
         </div>
 
     </body>
-</html>
+

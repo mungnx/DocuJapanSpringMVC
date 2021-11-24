@@ -15,8 +15,9 @@ public class CartDto {
 		return totalPrice;
 	}
 	public void setTotalPrice(double totalPrice) {
-		this.totalPrice = totalPrice;
-	}
+		this.totalPrice = totalPrice-product.getSale();
+		}
+		
 	public ProductsDto getProduct() {
 		return product;
 	}

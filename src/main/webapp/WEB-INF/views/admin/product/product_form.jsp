@@ -8,12 +8,12 @@
 <title>Products Manager</title>
 
 <style type="text/css">
-.pagination {
+#pagination {
 	display: flex;
 	justify-content: center;
 }
 
-.pagination a {
+#pagination a {
 	color: black;
 	float: left;
 	padding: 8px 16px;
@@ -23,19 +23,24 @@
 	margin: 0 4px;
 }
 
-.pagination a.active {
+#pagination a.active {
 	background-color: #f89406;
 	color: white;
 	border: 1px solid #f89406;
 	
 }
 
-.pagination a:hover:not (.active ) {
+#pagination a:hover:not (.active ) {
 	background-color: #ddd;
 }
 </style>
 </head>
 <body>
+<div class="page-container">	
+<div class="left-content">
+ <div class="mother-grid-inner">
+
+                    <jsp:include page="../header.jsp"></jsp:include>
 <div class="inner-block">
 <div class="pro-head" >
 			<h2> Product Manager</h2>
@@ -44,7 +49,7 @@
 
 <div class="work-progres">
 <h4>Total: ${toltalData } Items</h4><br/>
-        <table class="table table-borded table-hover " id="table-list">
+        <table class="table table-hover table-striped table-bordered table-sm " id="table-list">
             <thead class="table-dark">
                 <tr>
                     <th>Image</th>
@@ -81,7 +86,8 @@
             </tbody>
 
         </table>
-        <div class="pagination">
+         
+       <div id="pagination">
 				<c:forEach var="item" begin="1" end="${ paginateAll.toltalPage}" varStatus="loop">
 
 					<c:if test="${(loop.index)== paginateAll.currentPage }">
@@ -93,7 +99,14 @@
 					</c:if>
 				</c:forEach>
 			</div>
-       </div>
-    </div>    
+			</div>
+    </div>
+    
+     <jsp:include page="../footer.jsp"></jsp:include>
+    </div>
+    <jsp:include page="../navigation.jsp"></jsp:include>
+    
+    </div>  
+    </div>	 
 </body>
 </html>

@@ -42,8 +42,8 @@ public class CategoryServiceImp implements ICategoryService {
 	}
 
 	public int AddCategory(Categories category) {
-
-		return categoriesDao.AddCategory(category);
+		 return categoriesDao.AddCategory(category);
+		
 	}
 
 	public int DeleteCategory(int id) {

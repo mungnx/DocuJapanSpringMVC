@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+    pageEncoding="UTF-8"%>  
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>アカウントを登録</title>
 
 <body>
+ <div class="container">
+         
+             <jsp:include page="../header.jsp"></jsp:include>
+            
 <div class="row">
 <div id="sidebar" class="span3">
 
@@ -45,6 +48,7 @@
 		<div class="span4">
 			<div class="well">
 			<h3>新しいアカウントを登録する</h3>
+			
 	<form:form action="dang-ky" method="POST" modelAttribute="user">
 		
 		<div class="control-group">
@@ -108,6 +112,8 @@
 		</div>
 </div>
 </div>
+</div>
+<jsp:include page="../footer.jsp"></jsp:include>
 </div>
 </body>
 </html>

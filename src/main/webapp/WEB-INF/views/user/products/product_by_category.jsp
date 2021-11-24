@@ -37,6 +37,10 @@
 </style>
 </head>
 <body>	
+ <div class="container">
+         
+             <jsp:include page="../header.jsp"></jsp:include>
+            
 	<div class="well well-small">
 	<div class="row">
 				<span style="margin-left: 25px;"><strong> ${categoryById.caption}</strong></span>
@@ -101,6 +105,7 @@
 			</c:if>
 		</c:forEach>
 	</div>
-
+	<jsp:include page="../footer.jsp"></jsp:include>
+</div>
 </body>
 </html>

@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import DocuJapan.Dto.CartDto;
 import DocuJapan.Entity.Bills;
-import DocuJapan.Entity.User;
+import DocuJapan.Entity.Account;
 import DocuJapan.Service.User.BillService;
 import DocuJapan.Service.User.CartServiceImp;
 
@@ -90,7 +90,7 @@ public class CartController extends BaseController{
 	    _mvShare.setViewName("user/bills/checkout");
 	    
 	    Bills bill=new Bills();
-	    User loginInfo=(User) session.getAttribute("LoginInfo");
+	    Account loginInfo=(Account) session.getAttribute("LoginInfo");
 	    if(loginInfo!=null) {
 	    	bill.setAddress(loginInfo.getAddress());
 	    	bill.setEmail(loginInfo.getEmail());
@@ -103,15 +103,22 @@ public class CartController extends BaseController{
 @RequestMapping(value= "check-out",method=RequestMethod.POST)
 
 public String CheckOutBill(HttpSession session,@ModelAttribute("bills")Bills bill) {
+	try {
 	bill.setQuanty((Integer) session.getAttribute("TotalQuantyCart"));	
 	bill.setTotal((Double) session.getAttribute("TotalPriceCart"));
+	
 	if(billService.AddBills(bill)>0) {
+		
 		HashMap<Integer, CartDto> carts=(HashMap<Integer, CartDto>)session.getAttribute("Cart");
 		billService.AddBillDetail(carts);
 	}	
 	session.removeAttribute("Cart");
 	session.removeAttribute("TotalQuantyCart");
 	session.removeAttribute("TotalPriceCart");
+	}catch(Exception e) {
+	System.out.println("Null cart " +e);
+	return "redirect:trang-chu";
+	}
 	return "redirect:thank-you";
 }
 }
