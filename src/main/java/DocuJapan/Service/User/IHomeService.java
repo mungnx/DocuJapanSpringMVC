@@ -20,6 +20,6 @@ public interface IHomeService {
 	public List<ProductsDto> GetDataNewProducts();
 	
 	public List<ProductsDto> GetDataHighlightProducts();
-
-}
+	
+	}
 

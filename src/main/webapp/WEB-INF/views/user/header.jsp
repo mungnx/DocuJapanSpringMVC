@@ -12,10 +12,8 @@
 <link href="<c:url value="/assets/user/style.css"/>" rel="stylesheet" />
 <!-- font awesome styles -->
 <link href="<c:url value="/assets/user/font-awesome/css/font-awesome.css"/>" rel="stylesheet">
-
-
 <!-- Favicons -->
-<link rel="shortcut icon" href="<c:url value="/assets/user/ico/favicon.ico" />">
+<link rel="shortcut icon" href="<c:url value="/assets/user/ico/favicon.ico"/>">
 </head>
 
 <!-- 
@@ -43,7 +41,7 @@
 					<c:if test="${empty LoginInfo }">
 					 <a href="<c:url value="/dang-ky"/>"><span class="icon-edit"></span>アカウント登録 - ログイン </a> 
 					 </c:if>
-					 <a href="contact.html"><span class="icon-envelope"></span>
+					 <a href="#"><span class="icon-envelope"></span>
 						連絡</a> <a href="<c:url value="/gio-hang/"/>"><span
 						class="icon-shopping-cart"></span> ${TotalQuantyCart } 商品 - <span 
 						class="badge badge-warning"> <fmt:formatNumber type="number" groupingUsed="true" value="${TotalPriceCart }" /> ¥ </span></a>
@@ -93,19 +91,15 @@ Navigation Bar Section
 						class="icon-bar"></span> <span class="icon-bar"></span>
 					</a>
 					<div class="nav-collapse">
-						<ul class="nav">
-						
-									<c:forEach var="menuName" items="${menu}" varStatus="i">
-									
-									<c:if test="${i.index==current }">
-					<li class="active"	><a href="<c:url value="${menuName.url }"/>">${menuName.name}</a></li>
-					</c:if>
-					<c:if test="${(i.index) != current }">
-					<li class=""	>	<a href="<c:url value="${menuName.url }"/>">${menuName.name}</a></li>
-					</c:if>
-						
-								</c:forEach>		
-
+						<ul class="nav topNav">					
+						<c:forEach var="menuName" items="${menu}" varStatus="loop">
+								
+								<li  class="topNav">
+								
+								<a href="<c:url value="${menuName.url }"/>">${menuName.name}</a>
+								
+								</li>							
+						</c:forEach>		
 						</ul>
 						<form action="#" class="navbar-search pull-left">
 							<input type="text" placeholder="Search"
@@ -115,4 +109,6 @@ Navigation Bar Section
 				</div>
 			</div>
 		</div>
+		
+	
 		</body>

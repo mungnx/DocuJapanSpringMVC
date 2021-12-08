@@ -51,7 +51,7 @@
    
 		<div class="span4">
 	<form:form action="check-out" method="POST" modelAttribute="bills">
-		<h3>お買い上げ情報</h3>
+		<h3>お客様情報</h3>
 		<div class="control-group">
 			<label class="control-label">氏名 <sup>*</sup></label>
 			<div class="controls">
@@ -90,6 +90,24 @@
 	</form:form>
 		</div>
 
+<div class="span4">
+	         <h3>お買い上げ情報</h3>
+              <c:forEach var="item" items="${Cart }">
+                <tr>
+                  <td><a href="<c:url value="/chi-tiet-san-pham/${item.value.product.id_product}"/>"><img width="50" src="<c:url value="/assets/user/img/${item.value.product.img}"/>" alt="Not avalible"></a></td>
+                  
+                  <td><strong>${item.value.product.name }</strong></td><br/>
+              
+            		<br/><span>Price: <fmt:formatNumber type="number" groupingUsed="true" value="${item.value.product.price }" /> ¥ | 
+					Sale: <fmt:formatNumber type="number" groupingUsed="true" value="${item.value.product.sale}" /> ¥</span>
+      				<p>Quantity: x ${item.value.quanty }</p>
+            		<p>Sub total: <fmt:formatNumber type="number" groupingUsed="true" value="${item.value.totalPrice}"/> ¥</p>
+            		<hr/>
+            		</tr>
+				 </c:forEach>
+				<h4 style="text-align:right">Total: <span><fmt:formatNumber type="number" groupingUsed="true" value="${TotalPriceCart }" /> ¥</span></h4>
+			
+		</div>
 </div>
 
 </div>

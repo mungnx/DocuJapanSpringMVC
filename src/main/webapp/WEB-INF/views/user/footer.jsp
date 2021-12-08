@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
   <body>
+  <div>
 		<section class="our_client">
 			<hr class="soften" />
 			
@@ -61,11 +62,24 @@
 Footer
 -->
 	<a href="#" class="gotop"><i class="icon-double-angle-up"></i></a>
+	</div>
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="<c:url value="/assets/user/js/jquery.js"/>"></script>
 	<script src="<c:url value="/assets/user/js/bootstrap.min.js"/>"></script>
 	<script src="<c:url value="/assets/user/js/jquery.easing-1.3.min.js"/>"></script>
 	<script src="<c:url value="/assets/user/js/jquery.scrollTo-1.4.3.1-min.js"/>"></script>
-	<script src="<c:url value="/assets/user/js/shop.js"/>"></script>	
+	<script src="<c:url value="/assets/user/js/shop.js"/>"></script>
+	<script type="text/javascript">
+	
+	var setDefaultActive = function() {
+	    var path = window.location.pathname;
+	    
+	    var element = $("a[href='" + path + "']");
 
+	    element.addClass("active");
+	   
+	}
+	setDefaultActive()
+	</script>
+		
 	</body>	

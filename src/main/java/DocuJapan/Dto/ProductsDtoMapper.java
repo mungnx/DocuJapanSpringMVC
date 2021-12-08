@@ -15,7 +15,7 @@ public class ProductsDtoMapper implements RowMapper<ProductsDto>{
 		productsDto.setId_category(rs.getInt("id_category"));	
 		productsDto.setName(rs.getString("name"));		
 		productsDto.setHighlight(rs.getBoolean("highlight"));
-		productsDto.setSale(rs.getInt("sale"));
+		productsDto.setSale(rs.getFloat("sale"));
 		productsDto.setTitle(rs.getString("title"));
 		productsDto.setSize(rs.getString("size"));
 		productsDto.setNew_product(rs.getBoolean("new_product"));

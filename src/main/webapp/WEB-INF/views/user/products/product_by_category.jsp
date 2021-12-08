@@ -71,6 +71,9 @@
 										groupingUsed="true" value="${item.price}" /> đ
 								</strong>
 							</p>
+							<p>Sale: <fmt:formatNumber type="number"
+													groupingUsed="true" value="${item.sale}" /> ¥
+										</p>
 							<h4>
 								<a class="shopBtn"
 									href="<c:url value="/AddCart/${item.id_product }"/>"

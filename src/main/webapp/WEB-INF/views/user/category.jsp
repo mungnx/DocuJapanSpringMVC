@@ -25,7 +25,7 @@
 			</div>
 			<div class="well well-small">
 			
-				<a href="#"><img src="<c:url value="/assets/user/img/paypal.jpg"/>"
+				 <a href="#"><img src="<c:url value="/assets/user/img/paypal.jpg"/>"
 					alt="payment method paypal"></a>
 			</div>
 
@@ -34,12 +34,12 @@
 			<ul class="nav nav-list promowrapper">
 				<li>
 					<div class="thumbnail">
-						<a class="zoomTool" href="product_details.html"
+						<a class="zoomTool" href="/DocuJapan/assets/user/img/a.jpg"
 							title="add to cart"><span class="icon-search"></span> チェック</a> <img src="<c:url value="/assets/user/img/a.jpg"/>"
 							alt="bootstrap ecommerce templates">
 						<div class="caption">
 						<h4>
-								<a class="defaultBtn" href="product_details.html">見る</a> <span
+								<a class="defaultBtn" href="#">見る</a> <span
 									class="pull-right">2200¥</span>
 							</h4>
 						</div>
@@ -48,7 +48,7 @@
 				<li style="border: 0">&nbsp;</li>
 				<li>
 					<div class="thumbnail">
-						<a class="zoomTool" href="#"
+						<a class="zoomTool" href="/DocuJapan/assets/user/img/j.jpg"
 							title="add to cart"><span class="icon-search"></span> チェック</a> <img src="<c:url value="/assets/user/img/j.jpg"/>"
 							alt="shopping cart template">
 						<div class="caption">

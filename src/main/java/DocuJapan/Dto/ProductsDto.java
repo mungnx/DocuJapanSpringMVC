@@ -1,6 +1,9 @@
 package DocuJapan.Dto;
 
 import java.util.Date;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class ProductsDto {
 	private int id_product;
@@ -11,7 +14,7 @@ public class ProductsDto {
 	private boolean highlight;
 	private boolean new_product;
 	private int id_category;
-	private int sale;
+	private float sale;
 	//private int id_color;
 	private String img;
 	private String title;
@@ -19,6 +22,8 @@ public class ProductsDto {
 	//private String code;
 	private Date created_at;
 	private Date updated_at;
+	private List<MultipartFile> images;
+	
 	
 	
 	public int getId_product() {
@@ -69,10 +74,10 @@ public class ProductsDto {
 	public void setId_category(int id_category) {
 		this.id_category = id_category;
 	}
-	public int getSale() {
+	public float getSale() {
 		return sale;
 	}
-	public void setSale(int sale) {
+	public void setSale(float sale) {
 		this.sale = sale;
 	}
 	
@@ -89,10 +94,6 @@ public class ProductsDto {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
-	
-	
-	
 	public Date getCreated_at() {
 		return created_at;
 	}
@@ -105,10 +106,17 @@ public class ProductsDto {
 	public void setUpdated_at(Date updated_at) {
 		this.updated_at = updated_at;
 	}
-	public ProductsDto() {
-		super();
-		setImg("404.png");
+	
+	public List<MultipartFile> getImages() {
+		return images;
+	}
+	public void setImages(List<MultipartFile> images) {
+		this.images = images;
 	}
 	
-
+	public ProductsDto() {
+		setCreated_at(new Date());
+		setUpdated_at(new Date());
+		setImg("404.png");
+	}
 }

@@ -1,5 +1,7 @@
 package DocuJapan.Controller.Admin;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,6 +13,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import DocuJapan.Dao.SlidesDao;
+import DocuJapan.Entity.Account;
 import DocuJapan.Entity.Slides;
 import DocuJapan.Service.User.SlideService;
 
@@ -22,7 +25,12 @@ public class SlideManagerController extends AdminController{
 	private SlidesDao slideDao= new SlidesDao();
 	
 	@RequestMapping(value="/admin/slide-manager",method=RequestMethod.GET)
-	public ModelAndView Get() {
+	public ModelAndView Get(HttpSession session) {
+		Account acc=(Account)session.getAttribute("LoginAdmin");
+		if (acc == null) {
+		       return new ModelAndView("redirect:/admin/login");
+		}
+		
 		_mvShare.addObject("slides",_homeService.GetDataSlide());
 		_mvShare.setViewName("/admin/product/slide_form");
 		_mvShare.addObject("slide",new Slides());
@@ -55,6 +63,7 @@ public class SlideManagerController extends AdminController{
 	@RequestMapping(value = "/admin/slide-save", method = RequestMethod.POST)
 	public String Save(Slides slide,@RequestParam CommonsMultipartFile file) throws Exception
 	{
+		try {
 				if(slide.getId()==0 && !slide.getFile().isEmpty()) {
 					slide.setImg(UpLoad(file));
 					slideService.AddSlide(slide);
@@ -65,10 +74,14 @@ public class SlideManagerController extends AdminController{
 					}else 
 						{
 							slide.setImg(UpLoad(file));
+							
 							slideService.UpdateSlide(slide);
 					}
 				
 				}
+		}catch(Exception e) {
+			System.out.println("Exception "+e);
+		}
 
 		return "redirect:/admin/slide-manager";
 	}

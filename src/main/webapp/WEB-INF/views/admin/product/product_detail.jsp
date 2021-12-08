@@ -22,7 +22,7 @@
 			</div>
 			<h4>${addstatus}</h4>
 			<form:form action="/DocuJapan/admin/product-save" method="POST"
-				modelAttribute="product">
+				modelAttribute="product" enctype="multipart/form-data">
 				<form:hidden path="id_product" />
 				<div class="form-row">
 					<div class="form-group col-md-4">
@@ -41,11 +41,11 @@
 							<br/>
 							
 						<label class="control-label" for="inputFname">Price<sup>*</sup></label>
-						<form:input name="cname" type="text" class="form-control"
+						<form:input  min="0"  step="500" name="cname" type="number" class="form-control"
 							id="inputFname" placeholder="Price input here" path="price" />
 							<br/>
 						<label class="control-label" for="inputFname">Product Sale</label>
-						<form:input name="cname" type="text" class="form-control"
+						<form:input  min="0"  step="100" name="cname" type="number" class="form-control"
 							id="inputFname" placeholder="Product sale input here" path="sale" />
 						<br/>	
 						<label class="control-label" for="inputFname">Size<sup>*</sup></label>
@@ -69,15 +69,37 @@
 						
 						<form:hidden path="img"/>
 									
-						<label class="control-label" for="inputFname">Image<sup>*</sup>
+						<label class="control-label" for="inputFname"> Main Image<sup>*</sup>
 						</label>
 						
 						<img width="80" height="80"  src="<c:url value="/assets/user/img/${product.img }"/>" alt="${product.img }">
+						<br/>
+						
+						<p>
+	                    <label for="image">Product Images: </label> 
+	                    <input type="file" name="images" multiple="multiple"/>
+	                	</p>
+						<div class="work-progres">
+				        <table>
+				          
+				            <tbody>
+				            <c:forEach var="item" items="${images }" varStatus="i">
+				                <tr>
+				             
+				                <td style="text-align:center"><img width="80" height="80" 
+				                   src="${pageContext.request.contextPath }/assets/admin/img/${item.img }" alt="${item.img }"></td>
+				   				 <td style="text-align:center">
+				  				 <a href="<c:url value="/admin/del-image/${item.id }"/>">Delete</a>
+				  				 </td>
+				                </tr>
+								 </c:forEach>
+				            </tbody>
+				        </table>
+   						 </div>  
 						</div>			
 						
 					</div>
-
-					<div class="form-group col-md-8">
+						<div class="form-group col-md-8">
 
 						<label class="control-label" for="inputFname">Detail<sup>*</sup></label>
 
@@ -89,10 +111,11 @@
 							path="title" />
 							<hr/>
 						
-						
+					<input id="reset" type="reset" class="btn btn-primary" value="Reset"/>	
 					<input type="submit" value="Save Product" class="btn btn-primary" />
 				</div>
 			</form:form>
+			
 			<div class="clearfix"></div>
 		</div>
 	<jsp:include page="../footer.jsp"></jsp:include>

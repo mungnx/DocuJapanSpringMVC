@@ -33,16 +33,24 @@ public class UserController extends BaseController{
 	public ModelAndView CreateAcc(HttpSession session,@ModelAttribute("user") Account user) { 
 		
 		try {
-			int count=accountService.AddAccount(user);
-		if(count>0) {
-			_mvShare.addObject("status","Register succeful!");
-			_mvShare.setViewName("redirect:trang-chu");
-			session.setAttribute("LoginInfo", user);
-		}
-		else {
-			_mvShare.setViewName("user/account/register");
-			_mvShare.addObject("status","Register Fail!!");
-		}
+			if(!user.getPassword().isEmpty())
+			{
+				int count=accountService.AddAccount(user);
+			
+				if(count>0) {
+					_mvShare.addObject("status","Register succeful!");
+					_mvShare.setViewName("redirect:trang-chu");
+					session.setAttribute("LoginInfo", user);
+				}
+				else {
+					_mvShare.setViewName("user/account/register");
+					_mvShare.addObject("status","Register Fail!!");
+				}
+				}
+			else {
+				_mvShare.setViewName("user/account/register");
+				_mvShare.addObject("status","Password not null!!");
+			}
 		}
 		catch(Exception e) {
 			_mvShare.setViewName("user/account/register");

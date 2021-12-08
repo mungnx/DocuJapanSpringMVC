@@ -25,24 +25,24 @@
         <table class="table table-striped table-bordered table-sm table-hover " id="table-list">
             <thead class="table-dark">
                 <tr>
-                    <th>No</th>
-                    <th>Customer Name</th>
-                    <th>Address</th>
-                    <th>Phone</th>                
-           		    <th>Quantity</th>
-                    <th>Total</th>
-                    <th>Oder Date</th>
-                    <th>Action</th>
+                    <th style="text-align:center">No</th>
+                    <th style="text-align:center">Customer Name</th>
+                    <th style="text-align:center">Address</th>
+                    <th style="text-align:center">Phone</th>                
+           		    <th style="text-align:center">Quantity</th>
+                    <th style="text-align:center">Total</th>
+                    <th style="text-align:center">Oder Date</th>
+                    <th style="text-align:center">Action</th>
                 </tr>
             </thead>
             <tbody>
             <c:forEach var="item" items="${oders }"  >
                 <tr>
-                <td>${item.id}</td>
+                <td style="text-align:center">${item.id}</td>
                   <td>${item.username }</td>
                   <td>${item.address }</td>
                   <td>${item.phone }</td>
-                  <td>${item.quanty }</td>
+                  <td style="text-align:center">${item.quanty }</td>
                   <td><fmt:formatNumber type="number" groupingUsed="true" value="${item.total }" /> ¥</td>
                   <td>${item.created_at }</td>
    				 <td><a href="<c:url value="/admin/invoice-manager/${item.id } "/>">Detail</a>|

@@ -32,13 +32,15 @@ public class LoginController extends AdminController {
 		
 	if(user!=null) {
 		_mvShare.setViewName("redirect:/admin");
-		session.setAttribute("LoginInfo", user);
+		session.setAttribute("LoginAdmin", user);
 	}
 	else {
 		_mvShare.setViewName("redirect:/admin/login");
+		_mvShare.addObject("statusLogin","Invalid login");
 		
 	}
 	}catch(Exception e) {
+		_mvShare.addObject("statusLogin","Email and Password not correct");
 
 	}
 	return _mvShare; 
@@ -47,7 +49,7 @@ public class LoginController extends AdminController {
 	@RequestMapping(value="admin/logout",method=RequestMethod.GET)
 	public String LogOut(HttpSession session) { 
 	
-		session.removeAttribute("LoginInfo");
+		session.removeAttribute("LoginAdmin");
 	return "redirect:/admin/login";
 	}
 	

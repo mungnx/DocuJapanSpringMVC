@@ -12,7 +12,7 @@ public class HomeController extends BaseController {
 	public ModelAndView Index() {
 		_mvShare.addObject("menu",_homeService.GetDataMenus());
 		_mvShare.addObject("slides",_homeService.GetDataSlide());
-		_mvShare.addObject("categories",_homeService.GetDataCategories());
+		_mvShare.addObject("categories",_homeService.HomeCategories());
 
 		_mvShare.addObject("new_products",_homeService.GetDataNewProducts());
 		_mvShare.addObject("highlight_products",_homeService.GetDataHighlightProducts());

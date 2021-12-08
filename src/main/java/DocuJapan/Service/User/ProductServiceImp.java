@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import DocuJapan.Dao.ImageDao;
 import DocuJapan.Dao.ProductsDao;
 import DocuJapan.Dto.ProductsDto;
 @Service
@@ -13,10 +14,13 @@ public class ProductServiceImp implements IProductService {
 	@Autowired
 	ProductsDao productDao=new ProductsDao();
 	
+	@Autowired
+	ImageDao imageDao=new  ImageDao();
+	
 	
 	public ProductsDto GetProductById(int id) {
-		List<ProductsDto> listProducts=productDao.GetProductById(id);
-		return listProducts.get(0);
+		ProductsDto product=productDao.FindProductById(id);
+		return product;
 	}
 	
 	
@@ -25,6 +29,11 @@ public class ProductServiceImp implements IProductService {
 		return productDao.GetAllProductsById(id);
 	}
 
+	
+public List<ProductsDto> GetProductBySale() {
+		
+		return productDao.GetAllProductSale();
+	}
 
 	public List<ProductsDto> GetAllProducts() {
 		
@@ -41,7 +50,8 @@ public class ProductServiceImp implements IProductService {
 	public int AddProduct(ProductsDto product) {
 		return productDao.AddProduct(product);
 	}
-
+	
+	
 
 	public int UpdateProduct(ProductsDto product) {
 		return productDao.UpdateProduct(product);

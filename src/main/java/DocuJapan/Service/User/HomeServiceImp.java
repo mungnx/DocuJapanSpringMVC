@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import DocuJapan.Dao.CategoriesDao;
 import DocuJapan.Dao.MenuDao;
-import DocuJapan.Dao.SlidesDao;
 import DocuJapan.Dao.ProductsDao;
+import DocuJapan.Dao.SlidesDao;
 import DocuJapan.Dto.ProductsDto;
 import DocuJapan.Entity.Categories;
 import DocuJapan.Entity.Menus;
@@ -18,6 +18,7 @@ public class HomeServiceImp implements IHomeService {
 	
 	@Autowired
 	private SlidesDao slidesDao;
+	
 	@Autowired
 	private CategoriesDao categoriesDao;
 	
@@ -32,9 +33,15 @@ public class HomeServiceImp implements IHomeService {
 		
 		return slidesDao.GetDataSlide();
 	}
+	
 	public List<Categories> GetDataCategories() {
 		
 		return categoriesDao.getDataCategories();
+	}
+	
+	public List<Categories> HomeCategories() {
+		
+		return categoriesDao.HomeCategories();
 	}
 	
 public Categories GetCategoriesById(int id) {
@@ -52,6 +59,6 @@ public Categories GetCategoriesById(int id) {
 		List<ProductsDto>  listHighlightProducts=productsDao.GetDataHighlightProducts();
 		return listHighlightProducts; 
 	}
-	
 
+	
 }

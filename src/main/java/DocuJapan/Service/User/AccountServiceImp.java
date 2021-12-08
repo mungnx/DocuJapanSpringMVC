@@ -15,9 +15,9 @@ public class AccountServiceImp {
 	UserDao userDao=new UserDao();
 	
 	public int AddAccount(Account user) {
-		
+		if(!user.getPassword().isEmpty()) {
 		user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12)));
-
+		}
 		return userDao.AddAccount(user);
 	}
 

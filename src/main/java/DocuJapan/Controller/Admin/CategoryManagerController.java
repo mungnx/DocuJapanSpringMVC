@@ -1,6 +1,7 @@
 package DocuJapan.Controller.Admin;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import DocuJapan.Dao.CategoriesDao;
+import DocuJapan.Entity.Account;
 import DocuJapan.Entity.Categories;
 import DocuJapan.Service.User.CategoryServiceImp;
 
@@ -23,7 +25,12 @@ public class CategoryManagerController extends AdminController{
 	
 	
 	@RequestMapping(value="/admin/category-manager",method=RequestMethod.GET)
-	public ModelAndView GetCategory() {
+	public ModelAndView GetCategory(HttpSession session) {
+		
+		Account acc=(Account)session.getAttribute("LoginAdmin");
+		if (acc == null) {
+		       return new ModelAndView("redirect:/admin/login");
+		}
 		_mvShare.addObject("categories",_homeService.GetDataCategories());
 		_mvShare.setViewName("/admin/product/category_form");
 		_mvShare.addObject("category",new Categories());
@@ -47,6 +54,8 @@ public class CategoryManagerController extends AdminController{
 
 	@RequestMapping(value="/admin/edit-category/{id}",method=RequestMethod.GET)
 	public ModelAndView CategoryEdit(@PathVariable int id,@ModelAttribute("category")Categories category) { 
+		
+		
 		category=categoryDao.getDataCategoriesById(id);
 		
 		_mvShare.addObject("category",category);
@@ -55,16 +64,18 @@ public class CategoryManagerController extends AdminController{
 	}
 	
 	@RequestMapping(value = "/admin/category-save", method = RequestMethod.POST)
-	public String SaveCategory(Categories category,HttpServletRequest request) {			
+	public String SaveCategory(Categories category,HttpServletRequest request) throws Exception {			
 		try {
-		if (category.getId()==0 && category.getName()!=null) {
+		if (category.getId()==0 && !category.getName().isEmpty()) {
 			categoryService.AddCategory(category);
+			_mvShare.addObject("delstatus", "Da them!");
 			
 		} else {
 		categoryService.UpdateCategory(category);
+		_mvShare.addObject("delstatus", "Da update!");
 		}
 		}catch(Exception e) {
-			System.out.println("Is empty");
+			System.out.println("Is empty "+e);
 		}
 	return "redirect:/admin/category-manager";
 	}

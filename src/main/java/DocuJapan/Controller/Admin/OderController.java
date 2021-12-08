@@ -1,5 +1,7 @@
 package DocuJapan.Controller.Admin;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import DocuJapan.Entity.Account;
 import DocuJapan.Entity.Bills;
 import DocuJapan.Service.User.BillService;
 import DocuJapan.Service.User.OderService;
@@ -20,7 +23,12 @@ public class OderController extends AdminController{
 	private OderService oderService=new OderService();
 	
 	@RequestMapping(value="/admin/oder-manager",method=RequestMethod.GET)
-	public ModelAndView GetOder() {
+	public ModelAndView GetOder(HttpSession session) {
+		Account acc=(Account)session.getAttribute("LoginAdmin");
+		if (acc == null) {
+		       return new ModelAndView("redirect:/admin/login");
+		}
+		
 		_mvShare.addObject("oders",billService.GetBills());
 		_mvShare.setViewName("/admin/order/oder_form");
 		_mvShare.addObject("oder",new Bills());

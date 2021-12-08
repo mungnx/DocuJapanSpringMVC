@@ -45,23 +45,23 @@
 <div class="pro-head" >
 			<h2> Product Manager</h2>
 			</div>
-		<a href="<c:url value="/admin/product-detail"/>" type="button" class="btn btn-primary" >Add New</a>  
-
 <div class="work-progres">
-<h4>Total: ${toltalData } Items</h4><br/>
+<a style="text-align:left" href="<c:url value="/admin/product-detail"/>" type="button" class="btn btn-primary" >Add New</a>
+<h4 style="text-align:right">Total: ${toltalData } Items</h4>
         <table class="table table-hover table-striped table-bordered table-sm " id="table-list">
             <thead class="table-dark">
                 <tr>
-                    <th>Image</th>
-                    <th>Product Name</th>
-                    <th>Price</th>
-                    <th>Sale</th>                
-                    <th>New Product</th>
-                    <th>HighLight</th>
-                    <th>Created</th>
-                    <th>Updated</th>
-                    <th>Images URL</th>
-                    <th>Edit|Delete</th>
+                    <th style="text-align:center">Image</th>
+                    <th style="text-align:center">Product Name</th>
+                    <th style="text-align:center">Category</th>
+                    <th style="text-align:center">Price</th>
+                    <th style="text-align:center">Sale</th>                
+                    <th style="text-align:center">NewArrive</th>
+                    <th style="text-align:center">HighLight</th>
+                    <th style="text-align:center">Created</th>
+                    <th style="text-align:center">Updated</th>
+                    
+                    <th style="text-align:center">Edit|Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -69,15 +69,20 @@
                 <tr>
                 <td><img width="80" height="80"  src="<c:url value="/assets/user/img/${item.img }"/>" alt="${item.id_product }"></td>
                   <td>${item.name }</td>
+                  <c:forEach var="c" items="${categories }" >
+                  <c:if test="${item.id_category==c.id }">
+                  <td style="text-align:center">${c.name} </td>
+                  </c:if>
+                  </c:forEach>
                   <td><fmt:formatNumber type="number" groupingUsed="true" value="${item.price }" /> ¥</td>
                   <td><fmt:formatNumber type="number" groupingUsed="true" value="${item.sale }" /> ¥</td>
-                  <td>${item.new_product }</td>
-                  <td>${item.highlight }</td>
-                  <td>${item.created_at }</td>
-                  <td>${item.updated_at }</td>
-                  <td>${item.img }</td>
+                  <td style="text-align:center">${item.new_product }</td>
+                  <td style="text-align:center">${item.highlight }</td>
+                  <td style="text-align:center">${item.created_at }</td>
+                  <td style="text-align:center">${item.updated_at }</td>
+                  
    
-  				 <td><a href="<c:url value="/admin/product-detail/${item.id_product } "/>">Edit</a>|
+  				 <td style="text-align:center"><a href="<c:url value="/admin/product-detail/${item.id_product } "/>">Edit</a>|
   				 <a href="<c:url value="/admin/del-product/${item.id_product } "/>" onclick="return confirm('Delete product?')">Delete</a>
   				 </td>
                 </tr>

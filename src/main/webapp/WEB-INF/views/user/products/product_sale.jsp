@@ -49,11 +49,11 @@ Body Section
 <!-- 
 Products
 -->
-			<c:if test="${allProductsPaginate.size()>0 }">
+			<c:if test="${ProductsPaginate.size()>0 }">
 
 				<div class="row-fluid">
 					<ul class="thumbnails">
-						<c:forEach var="item" items="${allProductsPaginate}" varStatus="loop">
+						<c:forEach var="item" items="${ProductsPaginate}" varStatus="loop">
 							<li class="span4">
 								<div class="thumbnail">
 									<a href="product_details.html" class="overlay"></a> <a
@@ -69,15 +69,10 @@ Products
 													groupingUsed="true" value="${item.price}" /> ¥
 											</strong>
 										</p>
-										<c:if test="${item.sale>0 }">
+										
 										<p>Sale: <fmt:formatNumber type="number"
 													groupingUsed="true" value="${item.sale}" /> ¥
 										</p>
-										</c:if>
-										<c:if test="${item.sale==0 }">
-										<p><br/></p>
-										
-										</c:if>
 										<h4>
 											<a class="shopBtn"
 												href="<c:url value="/AddCart/${item.id_product }"/>"
@@ -87,10 +82,10 @@ Products
 									</div>
 								</div>
 							</li>
-				<c:if	test="${(loop.index +1)%3==0 ||(loop.index +1)==allProductsPaginate.size() }">
+				<c:if	test="${(loop.index +1)%3==0 ||(loop.index +1)==ProductsPaginate.size() }">
 					</ul>
 				</div>
-				<c:if test="${(loop.index + 1)< allProductsPaginate.size() }">
+				<c:if test="${(loop.index + 1)< ProductsPaginate.size() }">
 					<div class="row-fluid">
 						<ul class="thumbnails">
 				</c:if>
@@ -99,14 +94,14 @@ Products
 			</c:if>
 
 			<div class="pagination">
-				<c:forEach var="item" begin="1" end="${ paginateAll.toltalPage}" varStatus="loop">
+				<c:forEach var="item" begin="1" end="${ paginateSale.toltalPage}" varStatus="loop">
 
-					<c:if test="${(loop.index)== paginateAll.currentPage }">
-						<a href="<c:url value="/danh-sach-san-pham/${loop.index }"/>"
+					<c:if test="${(loop.index)== paginateSale.currentPage }">
+						<a href="<c:url value="/product-sale/${loop.index }"/>"
 							class="active">${loop.index }</a>
 					</c:if>
-					<c:if test="${(loop.index) != paginateAll.currentPage }">
-						<a href="<c:url value="/danh-sach-san-pham/${loop.index }"/>">${loop.index }</a>
+					<c:if test="${(loop.index) != paginateSale.currentPage }">
+						<a href="<c:url value="/product-sale/${loop.index }"/>">${loop.index }</a>
 					</c:if>
 				</c:forEach>
 			</div>

@@ -51,15 +51,17 @@
         							<table class="table table-striped table-bordered table-sm table-hover">
 											<thead>
 												<tr>
-													<th>Product Name</th>
-													<th>Price</th>
-													<th>Quantity</th>
-													<th>Sub Total</th>
+													<th style="text-align:center">No</th>
+													<th style="text-align:center">Product Name</th>
+													<th style="text-align:center">Price</th>
+													<th style="text-align:center">Quantity</th>
+													<th style="text-align:center">Sub Total</th>
 												</tr>
 											</thead>
 											<tbody>
-											<c:forEach var="item" items="${invoices }"  >
+											<c:forEach var="item" items="${invoices }" varStatus="i" >
 												<tr>
+													<td style="text-align:center">${i.index +1}</td>
 													<td>
 														${item.productName }
 														<p class="m-0 text-muted">
@@ -71,7 +73,7 @@
 														sale: <fmt:formatNumber type="number" groupingUsed="true" value="${item.sale}" /> ¥
 														</p>
 													</td>
-													<td>${item.quanty }</td>
+													<td style="text-align:center">${item.quanty }</td>
 													<td><fmt:formatNumber type="number" groupingUsed="true" value="${item.total }" /> ¥</td>
 												</tr>
 												</c:forEach>

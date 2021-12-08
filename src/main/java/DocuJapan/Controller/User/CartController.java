@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import DocuJapan.Dto.CartDto;
-import DocuJapan.Entity.Bills;
 import DocuJapan.Entity.Account;
+import DocuJapan.Entity.Bills;
 import DocuJapan.Service.User.BillService;
 import DocuJapan.Service.User.CartServiceImp;
 
@@ -25,7 +25,7 @@ public class CartController extends BaseController{
 	BillService billService=new BillService();
 	@Autowired
 	private CartServiceImp cartService=new CartServiceImp();
-
+	
 	@RequestMapping(value= "gio-hang")
 	
 	public ModelAndView Index() {
@@ -40,10 +40,10 @@ public class CartController extends BaseController{
 		return _mvShare;
 	}
 	
-	
 	@RequestMapping(value="AddCart/{id}")
 	
 	public String AddCart(HttpServletRequest request,HttpSession session,@PathVariable int id) {
+		@SuppressWarnings("unchecked")
 		HashMap<Integer, CartDto> cart=(HashMap<Integer, CartDto>)session.getAttribute("Cart");
 		if (cart==null) {
 			cart=new HashMap<Integer, CartDto>();
@@ -58,6 +58,7 @@ public class CartController extends BaseController{
 	
 	@RequestMapping(value="DeleteCart/{id}")
 	public String DeleteCart(HttpServletRequest request,HttpSession session,@PathVariable int id) {
+		@SuppressWarnings("unchecked")
 		HashMap<Integer, CartDto> cart=(HashMap<Integer, CartDto>)session.getAttribute("Cart");
 		if (cart==null) {
 			cart=new HashMap<Integer, CartDto>();
@@ -72,6 +73,7 @@ public class CartController extends BaseController{
 	
 	@RequestMapping(value="gio-hang/EditCart/{id}/{quanty}")
 	public String DeleteCart(HttpServletRequest request,HttpSession session,@PathVariable int id, @PathVariable int quanty){
+	@SuppressWarnings("unchecked")
 	HashMap<Integer, CartDto> cart=(HashMap<Integer, CartDto>)session.getAttribute("Cart");
 		if (cart==null) {
 			cart=new HashMap<Integer, CartDto>();
@@ -96,6 +98,7 @@ public class CartController extends BaseController{
 	    	bill.setEmail(loginInfo.getEmail());
 	    	bill.setUsername(loginInfo.getUserName());
 	    }
+	    
 		_mvShare.addObject("bills", bill);
 		return _mvShare;
 	}
@@ -109,6 +112,7 @@ public String CheckOutBill(HttpSession session,@ModelAttribute("bills")Bills bil
 	
 	if(billService.AddBills(bill)>0) {
 		
+		@SuppressWarnings("unchecked")
 		HashMap<Integer, CartDto> carts=(HashMap<Integer, CartDto>)session.getAttribute("Cart");
 		billService.AddBillDetail(carts);
 	}	

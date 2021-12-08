@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>  
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
+<!DOCTYPE html>
+<html>
+<head>
 <meta charset="UTF-8">
-<title>アカウントを登録</title>
-
+<title>Register</title>
+</head>
 <body>
  <div class="container">
          
@@ -48,9 +51,9 @@
 		<div class="span4">
 			<div class="well">
 			<h3>新しいアカウントを登録する</h3>
+			<h5 style="color:red">${status}</h5>
 			
 	<form:form action="dang-ky" method="POST" modelAttribute="user">
-		
 		<div class="control-group">
 		 
 			<label class="control-label" for="inputFname">氏名： <sup>*</sup></label>

@@ -20,6 +20,7 @@
 <!--icons-css-->
 <link href="<c:url value="/assets/admin/css/font-awesome.css"/>" rel="stylesheet"> 
 <link rel="shortcut icon" href="<c:url value="/assets/user/ico/favicon.ico" />">
+<style type="text/css">.thumb-image{float:left;width:100%;height:250px;padding:5px;}</style>
 </head>
     <body>
 
@@ -40,8 +41,8 @@
                                 <div class="profile_img">	
                                     <span class="prfil-img"><img src="<c:url value="/assets/admin/img/p2.png"/>"> </span> 
                                     <div class="user-name">
-                                        <p>${LoginInfo.userName}</p>
-                                        <span>${LoginInfo.email}</span>
+                                        <p>${LoginAdmin.userName}</p>
+                                        <span>${LoginAdmin.email}</span>
                                     </div>
                                     <i class="fa fa-angle-down lnr"></i>
                                     <i class="fa fa-angle-up lnr"></i>

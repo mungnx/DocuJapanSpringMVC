@@ -40,7 +40,14 @@ public class CategoryServiceImp implements ICategoryService {
 		return productsDao.AllProductsPaginate(totalPage, start);
 
 	}
+	
+	public List<ProductsDto> AllProductsSalePaginate(int totalPage, int start) {
 
+		return productsDao.AllProductsSalePaginate(totalPage, start);
+
+	}
+	
+	
 	public int AddCategory(Categories category) {
 		 return categoriesDao.AddCategory(category);
 		
@@ -55,5 +62,6 @@ public class CategoryServiceImp implements ICategoryService {
 
 		return categoriesDao.UpdateCategory(category);
 	}
+
 
 }

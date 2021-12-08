@@ -85,6 +85,15 @@ private String SqlProductsPaginates(int toltalPage, int offset) {
 	return sql.toString();
 	
 }
+
+private String SqlProductsSalePaginates(int toltalPage, int offset) {
+	
+	StringBuffer sql=SqlString();
+	sql.append(" where p.sale>=500");
+	sql.append(" LIMIT " +toltalPage+" "+ "OFFSET "+offset);
+	return sql.toString();
+	
+}
 	
 public  List<ProductsDto> GetDataNewProducts(){
 		
@@ -134,13 +143,6 @@ public  List<ProductsDto> AllProductsPaginate(int toltalPage, int offset){
 	return listProduct;
 }
 
-	
-public List<ProductsDto> GetProductById(int id) {
-		String sql=SqlProductById(id);
-		List<ProductsDto> listProduct=_jbdcTemplate.query(sql, new ProductsDtoMapper());
-		return listProduct;
-	}
-	
 	public ProductsDto FindProductById(int id) {
 		String sql=SqlProductById(id);
 		ProductsDto product=_jbdcTemplate.queryForObject(sql, new ProductsDtoMapper());
@@ -206,4 +208,29 @@ public List<ProductsDto> GetProductById(int id) {
 		return _jbdcTemplate.update(sql.toString());
 	}
 	
+	public List<ProductsDto> GetAllProductSale() {
+		StringBuffer sql=SqlString();
+		sql.append(" where p.sale>0");
+		List<ProductsDto> listProduct=_jbdcTemplate.query(sql.toString(),new ProductsDtoMapper());
+		
+		return listProduct;
+	}
+	
+	
+	public List<ProductsDto> AllProductsSalePaginate(int totalPage, int start) {
+		List<ProductsDto> listProduct=new ArrayList<ProductsDto>();	
+		String sql=SqlProductsSalePaginates(totalPage, start);
+			
+			listProduct=_jbdcTemplate.query(sql.toString(),new ProductsDtoMapper());
+		
+		return listProduct;
+	}
+	
+	
+	public int GetLastId() {
+		StringBuffer sql=new StringBuffer();
+		sql.append("SELECT MAX(id) FROM products");
+		int id=_jbdcTemplate.queryForObject(sql.toString(), new Object[] {},Integer.class);
+		return id;
+	}
 }

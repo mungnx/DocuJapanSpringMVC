@@ -10,6 +10,14 @@ import DocuJapan.Entity.MapperCategories;
 @Repository
 public class CategoriesDao extends BaseDao {
 
+	public List<Categories> HomeCategories() {
+		List<Categories> list = new ArrayList<Categories>();
+		
+		String sql = "SELECT	* FROM categories WHERE id!=1";
+		list = _jbdcTemplate.query(sql, new MapperCategories());
+		return list;
+}
+	
 	public List<Categories> getDataCategories() {
 		List<Categories> list = new ArrayList<Categories>();
 		
